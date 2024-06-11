@@ -46,7 +46,7 @@ depending on the versions of the scripts (version information is stored in the d
 
 This project can be used as a source of working example scripts and as a non-regression testing suite.
 
-Questions and comments are welcome on the [FreeFEM forum](https://community.freefem.org) or directly to @alh104.
+Questions and comments are welcome on the [FreeFEM forum](https://community.freefem.org) or directly to [alh104](https://github.com/alh104).
 
 <!-- 
    - Local Variables:
