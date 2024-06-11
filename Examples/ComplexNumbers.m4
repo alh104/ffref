@@ -1,0 +1,104 @@
+// ~/ffalh/ffref/Examples/ComplexNumbers.m4
+// ========================================
+// 
+// Originally from [[https://doc.freefem.org/tutorials/complexNumbers.html]]
+// Adapted by Antoine Le Hyaric ([[http://www.ljll.fr/lehyaric]])
+// 
+// Sorbonne Université, CNRS, Laboratoire Jacques-Louis Lions, F-75005, Paris, France
+// 
+// [[elisp:(progn (org-link-minor-mode) (setq org-link-descriptive nil) (org-toggle-link-display))][hide links]] [[elisp:(progn (org-link-minor-mode) (setq org-link-descriptive t) (org-toggle-link-display))][show links]] [[elisp:(alh-1dex-open)][open 1dex]] [[elisp:(alh-1dex-update)][update 1dex]]
+// [[elisp:(alh-set-keywords)][set keywords]] ([[file:~/alh/bin/headeralh][headeralh]])
+// emacs-keywords adapted edp nofaces origin=[[https://doc.freefem.org/tutorials/complexNumbers.html]] start=08/10/21 univ update=10/06/24
+
+// Parameters
+int nn = 2;
+real a = 20.;
+real b = 20.;
+real c = 15.;
+real d = 8.;
+real e = 2.;
+real l = 12.;
+real f = 2.;
+real g = 2.;
+
+// Mesh
+border a0(t=0, 1){x=a*t; y=0; label=1;}
+border a1(t=1, 2){x=a; y=b*(t-1); label=1;}
+border a2(t=2, 3){ x=a*(3-t); y=b; label=1;}
+border a3(t=3, 4){x=0; y=b-(b-c)*(t-3); label=1;}
+border a4(t=4, 5){x=0; y=c-(c-d)*(t-4); label=2;}
+border a5(t=5, 6){x=0; y=d*(6-t); label=1;}
+
+border b0(t=0, 1){x=a-f+e*(t-1); y=g; label=3;}
+border b1(t=1, 4){x=a-f; y=g+l*(t-1)/3; label=3;}
+border b2(t=4, 5){x=a-f-e*(t-4); y=l+g; label=3;}
+border b3(t=5, 8){x=a-e-f; y=l+g-l*(t-5)/3; label=3;}
+
+mesh Th = buildmesh(a0(10*nn) + a1(10*nn) + a2(10*nn) + a3(10*nn) +a4(10*nn) + a5(10*nn)
+   + b0(5*nn) + b1(10*nn) + b2(5*nn) + b3(10*nn));
+real meat = Th(a-f-e/2, g+l/2).region;
+real air= Th(0.01,0.01).region;
+plot(Th, wait=1);
+
+// Fespace
+fespace Vh(Th, P1);
+Vh R=(region-air)/(meat-air);
+Vh<complex> v, w;
+Vh vr, vi;
+
+fespace Uh(Th, P1);
+Uh u, uu, ff;
+
+// Problem
+solve muwave(v, w)
+   = int2d(Th)(
+        v*w*(1+R)
+      - (dx(v)*dx(w) + dy(v)*dy(w))*(1 - 0.5i)
+   )
+   + on(1, v=0)
+   + on(2, v=sin(pi*(y-c)/(c-d)))
+   ;
+
+vr = real(v);
+vi = imag(v);
+
+// Plot
+plot(vr, wait=1, ps="test_rmuonde.ps", fill=true);
+plot(vi, wait=1, ps="test_imuonde.ps", fill=true);
+
+// Problem (temperature)
+ff=1e5*(vr^2 + vi^2)*R;
+
+solve temperature(u, uu)
+   = int2d(Th)(
+        dx(u)* dx(uu)+ dy(u)* dy(uu)
+   )
+   - int2d(Th)(
+        ff*uu
+   )
+   + on(1, 2, u=0)
+   ;
+
+// Plot
+plot(u, wait=1, ps="test_tempmuonde.ps", fill=true);
+
+// [[elisp:(compile "cd .. && ./history -default -run -db Examples/ComplexNumbers")]] => [[file:ComplexNumbers.default.out]]
+// [[elisp:(compile "cd .. && ./history -ffjs -run -db Examples/ComplexNumbers")]] => [[file:ComplexNumbers.ffjs_dev.out]]
+// [[file:../history.db::Examples/ComplexNumbers]]
+// [[elisp:(compile "FreeFem++ ComplexNumbers.edp")]]
+
+real ref=int2d(Th)(u);
+CHECKREFREL(ref,1206.54,1e-3);
+VERSION(v2);
+TESTLEVEL(+);
+
+// Local Variables:
+// mode:ff++
+// c-basic-offset:2
+// eval:(visual-line-mode t)
+// coding:utf-8
+// eval:(flyspell-prog-mode)
+// eval:(outline-minor-mode)
+// eval:(org-link-minor-mode)
+// End:
+// LocalWords: emacs

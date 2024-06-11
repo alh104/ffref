@@ -1,0 +1,58 @@
+// ~/ffalh/ffref/Models/Evolution3.m4
+// ==================================
+// 
+// Originally from [[https://doc.freefem.org/models/evolution-problems.html]]
+// Adapted by Antoine Le Hyaric ([[http://www.ljll.fr/lehyaric]])
+// 
+// Sorbonne Université, CNRS, Laboratoire Jacques-Louis Lions, F-75005, Paris, France
+// 
+// [[elisp:(progn (org-link-minor-mode) (setq org-link-descriptive nil) (org-toggle-link-display))][hide links]] [[elisp:(progn (org-link-minor-mode) (setq org-link-descriptive t) (org-toggle-link-display))][show links]] [[elisp:(alh-1dex-open)][open 1dex]] [[elisp:(alh-1dex-update)][update 1dex]]
+// [[elisp:(alh-set-keywords)][set keywords]] ([[file:~/alh/bin/headeralh][headeralh]])
+// emacs-keywords adapted edp nofaces origin=[[https://doc.freefem.org/models/evolution-problems.html]] start=08/10/21 univ update=10/06/24
+
+// Parameters
+real dt = 0.17;
+
+// Mesh
+border C(t=0, 2*pi){x=cos(t); y=sin(t);}
+mesh Th = buildmesh(C(70));
+
+// Fespace
+fespace Vh(Th, P1);
+Vh u0;
+Vh a1 = -y, a2 = x; //rotation velocity
+Vh u;
+
+// Initialization
+u = exp(-10*((x-0.3)^2 +(y-0.3)^2));
+
+// Time loop
+real t = 0.;
+for (int m = 0; m < 2*pi/dt; m++){
+    // Update
+    t += dt;
+    u0 = u;
+
+    // Convect
+    u = convect([a1, a2], -dt, u0); //u^{m+1}=u^m(X^m(x))
+
+    // Plot
+    plot(u, cmm=" t="+t+", min="+u[].min+", max="+u[].max);
+}
+
+real ref=u[]'*u[];
+CHECKREFREL(ref,4.4874,1e-6);
+
+// v2: add a reference value
+VERSION(v2);
+
+// Local Variables:
+// mode:ff++
+// c-basic-offset:2
+// eval:(visual-line-mode t)
+// coding:utf-8
+// eval:(flyspell-prog-mode)
+// eval:(outline-minor-mode)
+// eval:(org-link-minor-mode)
+// End:
+// LocalWords: emacs

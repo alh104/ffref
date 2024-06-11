@@ -1,0 +1,103 @@
+// ~/ffalh/ffref/Models/NavierStokes1.m4
+// =====================================
+// 
+// Originally from [[https://doc.freefem.org/models/navier-stokes-equations.html]]
+// Adapted by Antoine Le Hyaric ([[http://www.ljll.fr/lehyaric]])
+// 
+// [[elisp:(progn (org-link-minor-mode) (setq org-link-descriptive nil) (org-toggle-link-display))][hide links]] [[elisp:(progn (org-link-minor-mode) (setq org-link-descriptive t) (org-toggle-link-display))][show links]] [[elisp:(alh-1dex-open)][open 1dex]] [[elisp:(alh-1dex-update)][update 1dex]]
+// [[elisp:(alh-set-keywords)][set keywords]] ([[file:~/alh/bin/headeralh][headeralh]])
+// emacs-keywords adapted edp nofaces origin=[[https://doc.freefem.org/models/navier-stokes-equations.html]] start=08/10/21 update=10/06/24
+
+// Parameters
+real nu = 1./100.;
+real dt = 0.1;
+
+mesh Th = square(8, 8);
+
+fespace Xh(Th, P2); //definition of the velocity component space
+fespace Mh(Th, P1); //definition of the pressure space
+Xh u2, v2;
+Xh u1, v1;
+Mh p, q;
+
+solve Stokes (u1, u2, p, v1, v2, q, solver=Crout)
+    = int2d(Th)(
+        (
+            dx(u1)*dx(v1)
+            + dy(u1)*dy(v1)
+            + dx(u2)*dx(v2)
+            + dy(u2)*dy(v2)
+        )
+        - p*q*(0.000001)
+        - p*dx(v1) - p*dy(v2)
+        - dx(u1)*q - dy(u2)*q
+    )
+    + on(3, u1=1, u2=0)
+    + on(1, 2, 4, u1=0, u2=0)
+    ;
+
+Xh psi, phi;
+
+solve streamlines (psi, phi)
+    = int2d(Th)(
+          dx(psi)*dx(phi)
+        + dy(psi)*dy(phi)
+    )
+    + int2d(Th)(
+        - phi*(dy(u1) - dx(u2))
+    )
+    + on(1, 2, 3, 4, psi=0)
+    ;
+
+int i=0;
+real alpha=1/dt;
+Xh up1, up2;
+problem NS (u1, u2, p, v1, v2, q, solver=Crout, init=i)
+    = int2d(Th)(
+          alpha*(u1*v1 + u2*v2)
+        + nu * (
+              dx(u1)*dx(v1) + dy(u1)*dy(v1)
+            + dx(u2)*dx(v2) + dy(u2)*dy(v2)
+        )
+        - p*q*(0.000001)
+        - p*dx(v1) - p*dy(v2)
+        - dx(u1)*q - dy(u2)*q
+    )
+    + int2d(Th)(
+        - alpha*convect([up1,up2],-dt,up1)*v1
+        - alpha*convect([up1,up2],-dt,up2)*v2
+    )
+    + on(3, u1=1, u2=0)
+    + on(1, 2, 4,u1=0, u2=0)
+    ;
+
+// Time loop
+for (i = 0; i <= 10; i++){
+    // Update
+    up1 = u1;
+    up2 = u2;
+
+    // Solve
+    NS;
+
+    // Plot
+    if (!(i % 10))
+    plot(coef=0.2, cmm="[u1,u2] and p", p, [u1, u2]);
+}
+
+real ref=p[]'*p[];
+CHECKREFREL(ref,5.51407,1e-6);
+
+// v2: add a reference value
+VERSION(v2);
+
+// Local Variables:
+// mode:ff++
+// c-basic-offset:2
+// eval:(visual-line-mode t)
+// coding:utf-8
+// eval:(flyspell-prog-mode)
+// eval:(outline-minor-mode)
+// eval:(org-link-minor-mode)
+// End:
+// LocalWords: emacs

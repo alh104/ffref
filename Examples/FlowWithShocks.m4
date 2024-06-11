@@ -1,0 +1,142 @@
+// ~/ffalh/ffref/Examples/FlowWithShocks.m4
+// ========================================
+// 
+// Originally from [[https://doc.freefem.org/tutorials/flowWithShocks.html]]
+// Adapted by Antoine Le Hyaric ([[http://www.ljll.fr/lehyaric]])
+// 
+// [[elisp:(progn (org-link-minor-mode) (setq org-link-descriptive nil) (org-toggle-link-display))][hide links]] [[elisp:(progn (org-link-minor-mode) (setq org-link-descriptive t) (org-toggle-link-display))][show links]] [[elisp:(alh-1dex-open)][open 1dex]] [[elisp:(alh-1dex-update)][update 1dex]]
+// [[elisp:(alh-set-keywords)][set keywords]] ([[file:~/alh/bin/headeralh][headeralh]])
+// emacs-keywords adapted edp nofaces origin=[[https://doc.freefem.org/tutorials/flowWithShocks.html]] start=08/10/21 update=10/06/24
+
+// Parameters
+int anew = 1;
+int m = 5;
+real x0 = 0.5;
+real y0 = 0.;
+real rr = 0.2;
+real dt = 0.01;
+real u0 = 2.;
+real err0 = 0.00625;
+real pena = 2.;
+
+// Mesh
+border ccc(t=0, 2){x=2-t; y=1;};
+border ddd(t=0, 1){x=0; y=1-t;};
+border aaa1(t=0, x0-rr){x=t; y=0;};
+border cercle(t=pi, 0){x=x0+rr*cos(t); y=y0+rr*sin(t);}
+border aaa2(t=x0+rr, 2){x=t; y=0;};
+border bbb(t=0, 1){x=2; y=t;};
+
+ mesh Th;
+if(anew)
+   Th = buildmesh (ccc(5*m) + ddd(3*m) + aaa1(2*m) + cercle(5*m) + aaa2(5*m) + bbb(2*m));
+else
+   Th = readmesh("test_Th_circle.mesh"); plot(Th);
+
+// fespace
+fespace Wh(Th, P1);
+Wh u, v;
+Wh u1, v1;
+Wh uh, vh;
+
+fespace Vh(Th, P1);
+Vh r, rh, r1;
+
+// Macro
+macro dn(u) (N.x*dx(u)+N.y*dy(u)) //
+
+// Initialization
+if(anew){
+   u1 = u0;
+   v1 = 0;
+   r1 = 1;
+}
+else{
+   ifstream g("test_u.txt"); g >> u1[];
+   ifstream gg("test_v.txt"); gg >> v1[];
+   ifstream ggg("test_r.txt"); ggg >> r1[];
+   plot(u1, ps="test_eta.eps", value=1, wait=1);
+   err0 = err0/10;
+   dt = dt/10;
+}
+
+// Problem
+problem euler(u, v, r, uh, vh, rh)
+   = int2d(Th)(
+        (u*uh + v*vh + r*rh)/dt
+      + ((dx(r)*uh + dy(r)*vh) - (dx(rh)*u + dy(rh)*v))
+   )
+   + int2d(Th)(
+      - (
+           rh*convect([u1,v1],-dt,r1)
+         + uh*convect([u1,v1],-dt,u1)
+         + vh*convect([u1,v1],-dt,v1)
+      )/dt
+   )
+   +int1d(Th, 6)(
+        rh*u
+   )
+   + on(2, r=0)
+   + on(2, u=u0)
+   + on(2, v=0)
+   ;
+
+// Iterations
+
+// ALH 15/10/21 Number of iterations reduced from 80 for [[ffkernel::docov]]
+int j = 10;
+
+for(int k = 0; k < 3; k++){
+   if(k==20){
+      err0 = err0/10;
+      dt = dt/10;
+      j = 5;
+   }
+
+   // Solve
+   for(int i = 0; i < j; i++){
+      euler;
+      u1=u;
+      v1=v;
+      r1=abs(r);
+      cout << "k = " << k << " E = " << int2d(Th)(u^2+v^2+r) << endl;
+      plot(r, value=1);
+   }
+
+   // Mesh adaptation
+   Th = adaptmesh (Th, r, nbvx=40000, err=err0, abserror=1, nbjacoby=2, omega=1.8, ratio=1.8, nbsmooth=3, splitpbedge=1, maxsubdiv=5, rescaling=1);
+   plot(Th);
+   u = u;
+   v = v;
+   r = r;
+
+   // Save
+   savemesh(Th, "test_Th_circle.mesh");
+   ofstream f("test_u.txt"); f << u[];
+   ofstream ff("test_v.txt"); ff << v[];
+   ofstream fff("test_r.txt"); fff << r[];
+   r1 = sqrt(u*u+v*v);
+   plot(r1, ps="test_mach.eps", value=1);
+   r1 = r;
+}
+
+// [[elisp:(compile "cd .. && ./history -default -run -db Examples/FlowWithShocks")]] => [[file:FlowWithShocks.default.out]]
+// [[elisp:(compile "cd .. && ./history -ffjs -run -db Examples/FlowWithShocks")]] => [[file:FlowWithShocks.ffjs_dev.out]]
+// [[file:../history.db::Examples/FlowWithShocks]]
+// [[elisp:(compile "FreeFem++ FlowWithShocks.edp")]]
+
+real ref=int2d(Th)(u^2+v^2+r);
+CHECKREFREL(ref,8.08264,1e-3);
+VERSION(v3);
+TESTLEVEL(+);
+
+// Local Variables:
+// mode:ff++
+// c-basic-offset:2
+// eval:(visual-line-mode t)
+// coding:utf-8
+// eval:(flyspell-prog-mode)
+// eval:(outline-minor-mode)
+// eval:(org-link-minor-mode)
+// End:
+// LocalWords: emacs

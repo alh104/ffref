@@ -1,0 +1,376 @@
+# [[file:Examples/ComplexNumbers.m4]]
+good    Examples/ComplexNumbers                 v2      1206.54             +         -5.8        v7       debian_4.13+dfsg-1+b3
+ok      Examples/ComplexNumbers                 -       26955               -         -           v4       debian_4.14+dfsg-1
+good    Examples/ComplexNumbers                 v2      1206.54             +         -5.8        v7       git_201226
+good    Examples/ComplexNumbers                 -       26955               -         -           v7       git_211227
+good    Examples/ComplexNumbers                 -       26955               -         -           v7       git_221230
+good    Examples/ComplexNumbers                 v2      1206.54             +         -5.8        v7       git_240227
+good    Examples/ComplexNumbers                 v2      1206.54             +         -5.8        v7       git_v3.61
+# [[file:Examples/Elasticity.m4]]
+good    Examples/Elasticity                     v2      0.422823            +         -6.1        v7       debian_4.13+dfsg-1+b3
+ok      Examples/Elasticity                     -       0.000310812         -         -           v4       debian_4.14+dfsg-1
+good    Examples/Elasticity                     -       0.000310812         -         -           v7       git_201226
+good    Examples/Elasticity                     -       0.000310812         -         -           v7       git_211227
+good    Examples/Elasticity                     -       0.000310812         -         -           v7       git_221230
+good    Examples/Elasticity                     v2      0.422823            +         -6.1        v7       git_240227
+good    Examples/Elasticity                     v2      0.422823            +         -6.1        v7       git_v3.61
+# [[file:Examples/FanBlade1.m4]]
+good    Examples/FanBlade1                      v2      165.9               +         -5.9        v7       debian_4.13+dfsg-1+b3
+ok      Examples/FanBlade1                      -       11341.6             -         -           v4       debian_4.14+dfsg-1
+good    Examples/FanBlade1                      -       11341.6             -         -           v7       git_201226
+good    Examples/FanBlade1                      -       11341.6             -         -           v7       git_211227
+good    Examples/FanBlade1                      -       11341.6             -         -           v7       git_221230
+good    Examples/FanBlade1                      v2      165.9               +         -5.9        v7       git_240227
+good    Examples/FanBlade1                      v2      165.9               +         -5.9        v7       git_v3.61
+# [[file:Examples/FlowWithShocks.m4]]
+good    Examples/FlowWithShocks                 v3      8.08264             +         -6.2        v7       debian_4.13+dfsg-1+b3
+ok      Examples/FlowWithShocks                 -       3505.06             -         -           v4       debian_4.14+dfsg-1
+good    Examples/FlowWithShocks                 v2      8.08274             -         -4.4        v7       git_201226
+good    Examples/FlowWithShocks                 v2      8.08264             -         -4.3        v7       git_211227
+good    Examples/FlowWithShocks                 v2      8.08264             -         -4.3        v7       git_221230
+good    Examples/FlowWithShocks                 v3      8.08264             +         -6.2        v7       git_240227
+good    Examples/FlowWithShocks                 v3      8.08291             +         -4.5        v7       git_v3.61
+# [[file:Examples/HeatExchanger.m4]]
+good    Examples/HeatExchanger                  v2      2476.7              +         -5.8        v7       debian_4.13+dfsg-1+b3
+ok      Examples/HeatExchanger                  -       983936              -         -           v4       debian_4.14+dfsg-1
+good    Examples/HeatExchanger                  v2      2476.7              +         -5.8        v7       git_201226
+good    Examples/HeatExchanger                  v2      2476.7              +         -5.8        v7       git_211227
+good    Examples/HeatExchanger                  v2      2476.7              +         -5.8        v7       git_221230
+good    Examples/HeatExchanger                  v2      2476.7              +         -5.8        v7       git_240227
+good    Examples/HeatExchanger                  v2      2476.7              +         -5.8        v7       git_v3.61
+# [[file:Examples/Membrane.m4]]
+good    Examples/Membrane                       v2      6.28973             +         -7.9        v7       debian_4.13+dfsg-1+b3
+ok      Examples/Membrane                       -       8914.78             -         -           v4       debian_4.14+dfsg-1
+good    Examples/Membrane                       -       8914.78             -         -           v7       git_201226
+good    Examples/Membrane                       -       8914.78             -         -           v7       git_211227
+good    Examples/Membrane                       -       8914.78             -         -           v7       git_221230
+good    Examples/Membrane                       v2      6.28973             +         -7.9        v7       git_240227
+good    Examples/Membrane                       v2      6.28973             +         -7.9        v7       git_v3.61
+# [[file:Examples/NavierStokesNewton.m4]]
+good    Examples/NavierStokesNewton             v2      20.4026             +         -6.1        v7       debian_4.13+dfsg-1+b3
+ok      Examples/NavierStokesNewton             -       92.3456             -         -           v4       debian_4.14+dfsg-1
+good    Examples/NavierStokesNewton             -       92.3456             -         -           v7       git_201226
+good    Examples/NavierStokesNewton             -       92.3456             -         -           v7       git_211227
+good    Examples/NavierStokesNewton             -       92.3456             -         -           v7       git_221230
+good    Examples/NavierStokesNewton             v2      20.4026             +         -6.1        v7       git_240227
+good    Examples/NavierStokesNewton             v2      20.4026             +         -6.1        v7       git_v3.61
+# [[file:Examples/OptimalControl.m4]]
+good    Examples/OptimalControl                 v2      4558.25             +         -6.3        v7       debian_4.13+dfsg-1+b3
+ok      Examples/OptimalControl                 -       4.43434e+06         -         -           v4       debian_4.14+dfsg-1
+good    Examples/OptimalControl                 -       4.43434e+06         -         -           v7       git_201226
+good    Examples/OptimalControl                 -       4.43434e+06         -         -           v7       git_211227
+good    Examples/OptimalControl                 -       4.43434e+06         -         -           v7       git_221230
+good    Examples/OptimalControl                 v2      4558.25             +         -6.3        v7       git_240227
+good    Examples/OptimalControl                 v2      4558.25             +         -6.3        v7       git_v3.61
+# [[file:Examples/Poisson.m4]]
+good    Examples/Poisson                        v2      1.90532e-05         +         -7.1        v7       debian_4.13+dfsg-1+b3
+ok      Examples/Poisson                        -       0.00629128          -         -           v4       debian_4.14+dfsg-1
+good    Examples/Poisson                        -       0.00629128          -         -           v7       git_201226
+good    Examples/Poisson                        -       0.00629128          -         -           v7       git_211227
+good    Examples/Poisson                        -       0.00629128          -         -           v7       git_221230
+good    Examples/Poisson                        v2      1.90532e-05         +         -7.1        v7       git_240227
+good    Examples/Poisson                        v2      1.90532e-05         +         -7.1        v7       git_v3.61
+# [[file:Examples/RotatingHill1.m4]]
+good    Examples/RotatingHill1                  v2      0.194521            +         -6.0        v7       debian_4.13+dfsg-1+b3
+ok      Examples/RotatingHill1                  -       16.2297             -         -           v4       debian_4.14+dfsg-1
+good    Examples/RotatingHill1                  v2      0.194521            +         -6.0        v7       git_201226
+good    Examples/RotatingHill1                  v2      0.194521            +         -6.0        v7       git_211227
+good    Examples/RotatingHill1                  v2      0.194521            +         -6.0        v7       git_221230
+good    Examples/RotatingHill1                  v2      0.194521            +         -6.0        v7       git_240227
+good    Examples/RotatingHill1                  v2      0.194521            +         -6.0        v7       git_v3.61
+# [[file:Examples/RotatingHill2.m4]]
+good    Examples/RotatingHill2                  v2      0.311385            +         -6.1        v7       debian_4.13+dfsg-1+b3
+ok      Examples/RotatingHill2                  -       179.439             -         -           v4       debian_4.14+dfsg-1
+good    Examples/RotatingHill2                  v2      0.311385            +         -6.1        v7       git_201226
+good    Examples/RotatingHill2                  v2      0.311385            +         -6.1        v7       git_211227
+good    Examples/RotatingHill2                  v2      0.311385            +         -6.1        v7       git_221230
+good    Examples/RotatingHill2                  v2      0.311385            +         -6.1        v7       git_240227
+good    Examples/RotatingHill2                  v2      0.311385            +         -6.1        v7       git_v3.61
+# [[file:Examples/RotatingHill3.m4]]
+good    Examples/RotatingHill3                  v3      0.311389            +         -6.0        v7       debian_4.13+dfsg-1+b3
+ok      Examples/RotatingHill3                  -       -                   -         -           v4       debian_4.14+dfsg-1
+good    Examples/RotatingHill3                  v2      33.6534             -         -6.0        v7       git_201226
+good    Examples/RotatingHill3                  v2      33.6534             -         -6.0        v7       git_211227
+good    Examples/RotatingHill3                  v2      33.6534             -         -6.0        v7       git_221230
+good    Examples/RotatingHill3                  v3      0.311389            +         -6.0        v7       git_240227
+good    Examples/RotatingHill3                  v3      0.311393            +         -4.9        v7       git_v3.61
+# [[file:Examples/Sound.m4]]
+good    Examples/Sound                          v3      0.166667            +         -5.7        v7       debian_4.13+dfsg-1+b3
+ok      Examples/Sound                          -       -                   -         -           v4       debian_4.14+dfsg-1
+good    Examples/Sound                          v2      7.99782             -         -6.6        v7       git_201226
+good    Examples/Sound                          v2      7.99782             -         -6.6        v7       git_211227
+good    Examples/Sound                          v2      7.99782             -         -6.6        v7       git_221230
+good    Examples/Sound                          v3      0.166667            +         -5.7        v7       git_240227
+good    Examples/Sound                          v3      0.166667            +         -5.7        v7       git_v3.61
+# [[file:Examples/SoundEigen.m4]]
+good    Examples/SoundEigen                     v2      14.6993             +         -6.2        v7       debian_4.13+dfsg-1+b3
+ok      Examples/SoundEigen                     -       131.466             -         -           v4       debian_4.14+dfsg-1
+good    Examples/SoundEigen                     v2      14.6993             +         -6.2        v7       git_201226
+good    Examples/SoundEigen                     v2      14.6993             +         -6.2        v7       git_211227
+good    Examples/SoundEigen                     v2      14.6993             +         -6.2        v7       git_221230
+good    Examples/SoundEigen                     v2      14.6993             +         -6.2        v7       git_240227
+good    Examples/SoundEigen                     v2      14.6993             +         -6.2        v7       git_v3.61
+# [[file:Examples/Stokes.m4]]
+good    Examples/Stokes                         v2      0.0166667           +         -5.7        v7       debian_4.13+dfsg-1+b3
+ok      Examples/Stokes                         -       149.411             -         -           v4       debian_4.14+dfsg-1
+good    Examples/Stokes                         v2      0.0166667           +         -5.7        v7       git_201226
+good    Examples/Stokes                         -       149.411             -         -           v7       git_211227
+good    Examples/Stokes                         -       149.411             -         -           v7       git_221230
+good    Examples/Stokes                         v2      0.0166667           +         -5.7        v7       git_240227
+good    Examples/Stokes                         v2      0.0166667           +         -5.7        v7       git_v3.61
+# [[file:Examples/StokesProjection.m4]]
+good    Examples/StokesProjection               v3      13.2785             +         -5.8        v7       debian_4.13+dfsg-1+b3
+ok      Examples/StokesProjection               -       430.791             -         -           v4       debian_4.14+dfsg-1
+good    Examples/StokesProjection               v2      13.2785             -         -5.8        v7       git_201226
+good    Examples/StokesProjection               v2      13.2785             -         -5.8        v7       git_211227
+good    Examples/StokesProjection               v2      13.2785             -         -5.8        v7       git_221230
+good    Examples/StokesProjection               v3      13.2785             +         -5.8        v7       git_240227
+good    Examples/StokesProjection               v3      13.2723             +         -3.3        v7       git_v3.61
+# [[file:Examples/ThermalConduction.m4]]
+good    Examples/ThermalConduction              v2      239.936             +         -5.7        v7       debian_4.13+dfsg-1+b3
+ok      Examples/ThermalConduction              -       -                   -         -           v4       debian_4.14+dfsg-1
+good    Examples/ThermalConduction              -       398140              -         -6.2        v7       git_201226
+good    Examples/ThermalConduction              -       398140              -         -6.2        v7       git_211227
+good    Examples/ThermalConduction              -       398140              -         -6.2        v7       git_221230
+good    Examples/ThermalConduction              v2      239.936             +         -5.7        v7       git_240227
+good    Examples/ThermalConduction              v2      239.936             +         -5.7        v7       git_v3.61
+# [[file:Examples/WifiPropagation.m4]]
+good    Examples/WifiPropagation                v2      7491.15             +         -8.0        v7       debian_4.13+dfsg-1+b3
+ok      Examples/WifiPropagation                -       506134              -         -           v4       debian_4.14+dfsg-1
+good    Examples/WifiPropagation                -       506134              -         -           v7       git_201226
+good    Examples/WifiPropagation                -       506134              -         -           v7       git_211227
+good    Examples/WifiPropagation                -       506134              -         -           v7       git_221230
+good    Examples/WifiPropagation                v2      7491.15             +         -8.0        v7       git_240227
+good    Examples/WifiPropagation                v2      7491.15             +         -8.0        v7       git_v3.61
+# [[file:Models/DomainDecomp1.m4]]
+good    Models/DomainDecomp1                    v2      5.02728             -         -           v7       debian_4.13+dfsg-1+b3
+ok      Models/DomainDecomp1                    v2      5.02728             -         -           v4       debian_4.14+dfsg-1
+good    Models/DomainDecomp1                    v2      5.02728             -         -           v7       git_201226
+good    Models/DomainDecomp1                    v2      5.02728             -         -           v7       git_211227
+good    Models/DomainDecomp1                    v2      5.02728             -         -           v7       git_221230
+good    Models/DomainDecomp1                    v2      5.02728             -         -           v7       git_240227
+good    Models/DomainDecomp1                    v2      5.02728             -         -           v7       git_v3.61
+# [[file:Models/DomainDecomp2.m4]]
+good    Models/DomainDecomp2                    v2      5.09348             -         -           v7       debian_4.13+dfsg-1+b3
+ok      Models/DomainDecomp2                    v2      5.09348             -         -           v4       debian_4.14+dfsg-1
+good    Models/DomainDecomp2                    v2      5.09348             -         -           v7       git_201226
+good    Models/DomainDecomp2                    v2      5.09348             -         -           v7       git_211227
+good    Models/DomainDecomp2                    v2      5.09348             -         -           v7       git_221230
+good    Models/DomainDecomp2                    v2      5.09348             -         -           v7       git_240227
+good    Models/DomainDecomp2                    v2      5.09348             -         -           v7       git_v3.61
+# [[file:Models/DomainDecomp3.m4]]
+good    Models/DomainDecomp3                    v2      28.9532             -         -           v7       debian_4.13+dfsg-1+b3
+ok      Models/DomainDecomp3                    v2      28.9532             -         -           v4       debian_4.14+dfsg-1
+good    Models/DomainDecomp3                    v2      28.9532             -         -           v7       git_201226
+good    Models/DomainDecomp3                    v2      28.9532             -         -           v7       git_211227
+good    Models/DomainDecomp3                    v2      28.9532             -         -           v7       git_221230
+good    Models/DomainDecomp3                    v2      28.9532             -         -           v7       git_240227
+good    Models/DomainDecomp3                    v2      28.9532             -         -           v7       git_v3.61
+# [[file:Models/Eigenvalues.m4]]
+good    Models/Eigenvalues                      v2      8.00074             -         -           v7       debian_4.13+dfsg-1+b3
+ok      Models/Eigenvalues                      v2      8.00074             -         -           v4       debian_4.14+dfsg-1
+good    Models/Eigenvalues                      v2      8.00074             -         -           v7       git_201226
+good    Models/Eigenvalues                      v2      8.00074             -         -           v7       git_211227
+good    Models/Eigenvalues                      v2      8.00074             -         -           v7       git_221230
+good    Models/Eigenvalues                      v2      8.00074             -         -           v7       git_240227
+good    Models/Eigenvalues                      v2      8.00074             -         -           v7       git_v3.61
+# [[file:Models/Elasticity1.m4]]
+good    Models/Elasticity1                      v2      4.38177             -         -           v7       debian_4.13+dfsg-1+b3
+ok      Models/Elasticity1                      v2      4.38177             -         -           v4       debian_4.14+dfsg-1
+good    Models/Elasticity1                      v2      4.38177             -         -           v7       git_201226
+good    Models/Elasticity1                      v2      4.38177             -         -           v7       git_211227
+good    Models/Elasticity1                      v2      4.38177             -         -           v7       git_221230
+good    Models/Elasticity1                      v2      4.38177             -         -           v7       git_240227
+good    Models/Elasticity1                      v2      4.38177             -         -           v7       git_v3.61
+# [[file:Models/Elasticity3.m4]]
+good    Models/Elasticity3                      v3      0.0229175           -         -3.8        v7       debian_4.13+dfsg-1+b3
+ko      Models/Elasticity3                      v2      6.35338             -         -           v4       debian_4.14+dfsg-1
+good    Models/Elasticity3                      v3      0.0229175           -         -3.8        v7       git_201226
+good    Models/Elasticity3                      v3      0.0229175           -         -3.8        v7       git_211227
+good    Models/Elasticity3                      v3      0.0229175           -         -3.8        v7       git_221230
+good    Models/Elasticity3                      v3      0.0229175           -         -3.8        v7       git_240227
+good    Models/Elasticity3                      v3      0.0229252           -         -3.8        v7       git_v3.61
+# [[file:Models/Elasticity4.m4]]
+good    Models/Elasticity4                      v2      0.0102007           -         -           v7       debian_4.13+dfsg-1+b3
+ok      Models/Elasticity4                      v2      0.0102007           -         -           v4       debian_4.14+dfsg-1
+good    Models/Elasticity4                      v2      0.0102007           -         -           v7       git_201226
+good    Models/Elasticity4                      v2      0.0102007           -         -           v7       git_211227
+good    Models/Elasticity4                      v2      0.0102007           -         -           v7       git_221230
+good    Models/Elasticity4                      v2      0.0102007           -         -           v7       git_240227
+good    Models/Elasticity4                      v2      0.0102007           -         -           v7       git_v3.61
+# [[file:Models/Evolution1.m4]]
+good    Models/Evolution1                       v2      378.849             -         -           v7       debian_4.13+dfsg-1+b3
+ok      Models/Evolution1                       v2      378.849             -         -           v4       debian_4.14+dfsg-1
+good    Models/Evolution1                       v2      378.849             -         -           v7       git_201226
+good    Models/Evolution1                       v2      378.849             -         -           v7       git_211227
+good    Models/Evolution1                       v2      378.849             -         -           v7       git_221230
+good    Models/Evolution1                       v2      378.849             -         -           v7       git_240227
+good    Models/Evolution1                       v2      378.849             -         -           v7       git_v3.61
+# [[file:Models/Evolution2.m4]]
+good    Models/Evolution2                       v2      1.4753              -         -6.9        v7       debian_4.13+dfsg-1+b3
+ok      Models/Evolution2                       v2      1.4753              -         -           v4       debian_4.14+dfsg-1
+good    Models/Evolution2                       v2      1.4753              -         -6.9        v7       git_201226
+good    Models/Evolution2                       v2      1.4753              -         -6.9        v7       git_211227
+good    Models/Evolution2                       v2      1.4753              -         -6.9        v7       git_221230
+good    Models/Evolution2                       v2      1.4753              -         -6.9        v7       git_240227
+good    Models/Evolution2                       v2      1.4753              -         -6.9        v7       git_v3.61
+# [[file:Models/Evolution3.m4]]
+good    Models/Evolution3                       v2      4.4874              -         -6.0        v7       debian_4.13+dfsg-1+b3
+ok      Models/Evolution3                       v2      4.4874              -         -           v4       debian_4.14+dfsg-1
+good    Models/Evolution3                       v2      4.4874              -         -6.0        v7       git_201226
+good    Models/Evolution3                       v2      4.4874              -         -6.0        v7       git_211227
+good    Models/Evolution3                       v2      4.4874              -         -6.0        v7       git_221230
+good    Models/Evolution3                       v2      4.4874              -         -6.0        v7       git_240227
+good    Models/Evolution3                       v2      4.4874              -         -6.0        v7       git_v3.61
+# [[file:Models/Evolution4.m4]]
+good    Models/Evolution4                       v3      18203               -         -5.6        v7       debian_4.13+dfsg-1+b3
+ok      Models/Evolution4                       v2      124264              -         -           v4       debian_4.14+dfsg-1
+good    Models/Evolution4                       v3      18203               -         -5.6        v7       git_201226
+good    Models/Evolution4                       v3      18203               -         -5.6        v7       git_211227
+good    Models/Evolution4                       v3      18203               -         -5.6        v7       git_221230
+good    Models/Evolution4                       v3      18203               -         -5.6        v7       git_240227
+good    Models/Evolution4                       v3      18204.5             -         -4.1        v7       git_v3.61
+# [[file:Models/FreeBoundary.m4]]
+good    Models/FreeBoundary                     v3      30.629              -         -6.9        v7       debian_4.13+dfsg-1+b3
+ok      Models/FreeBoundary                     v2      1122.75             -         -           v4       debian_4.14+dfsg-1
+ko      Models/FreeBoundary                     v3      30.5667             -         -2.7        v7       git_201226
+good    Models/FreeBoundary                     v3      30.629              -         -6.9        v7       git_211227
+good    Models/FreeBoundary                     v3      30.629              -         -6.9        v7       git_221230
+good    Models/FreeBoundary                     v3      30.629              -         -6.9        v7       git_240227
+good    Models/FreeBoundary                     v3      30.6669             -         -2.9        v7       git_v3.61
+# [[file:Models/NavierStokes1.m4]]
+good    Models/NavierStokes1                    v2      5.51407             -         -6.2        v7       debian_4.13+dfsg-1+b3
+ok      Models/NavierStokes1                    v2      5.51407             -         -           v4       debian_4.14+dfsg-1
+good    Models/NavierStokes1                    v2      5.51407             -         -6.2        v7       git_201226
+good    Models/NavierStokes1                    v2      5.51407             -         -6.2        v7       git_211227
+good    Models/NavierStokes1                    v2      5.51407             -         -6.2        v7       git_221230
+good    Models/NavierStokes1                    v2      5.51407             -         -6.2        v7       git_240227
+good    Models/NavierStokes1                    v2      5.51407             -         -6.2        v7       git_v3.61
+# [[file:Models/NavierStokes2.m4]]
+good    Models/NavierStokes2                    v2      58411.8             -         -6.1        v7       debian_4.13+dfsg-1+b3
+ok      Models/NavierStokes2                    v2      58411.8             -         -           v4       debian_4.14+dfsg-1
+good    Models/NavierStokes2                    v2      58411.8             -         -6.1        v7       git_201226
+good    Models/NavierStokes2                    v2      58411.8             -         -6.1        v7       git_211227
+good    Models/NavierStokes2                    v2      58411.8             -         -6.1        v7       git_221230
+good    Models/NavierStokes2                    v2      58411.8             -         -6.1        v7       git_240227
+good    Models/NavierStokes2                    v2      58411.8             -         -6.2        v7       git_v3.61
+# [[file:Models/NavierStokes3.m4]]
+good    Models/NavierStokes3                    v2      253.02              -         -6.7        v7       debian_4.13+dfsg-1+b3
+ok      Models/NavierStokes3                    v2      253.02              -         -           v4       debian_4.14+dfsg-1
+good    Models/NavierStokes3                    v2      253.02              -         -6.7        v7       git_201226
+good    Models/NavierStokes3                    v2      253.02              -         -6.7        v7       git_211227
+good    Models/NavierStokes3                    v2      253.02              -         -6.7        v7       git_221230
+good    Models/NavierStokes3                    v2      253.02              -         -6.7        v7       git_240227
+toolong Models/NavierStokes3                    v2      -                   -         -4.7        v7       git_v3.61
+# [[file:Models/NeoHookean.m4]]
+good    Models/NeoHookean                       v2      20.5599             -         -6.2        v7       debian_4.13+dfsg-1+b3
+ok      Models/NeoHookean                       v2      20.5599             -         -           v4       debian_4.14+dfsg-1
+good    Models/NeoHookean                       v2      20.5599             -         -6.2        v7       git_201226
+good    Models/NeoHookean                       v2      20.5599             -         -6.2        v7       git_211227
+good    Models/NeoHookean                       v2      20.5599             -         -6.2        v7       git_221230
+good    Models/NeoHookean                       v2      20.5599             -         -6.2        v7       git_240227
+good    Models/NeoHookean                       v2      20.5599             -         -6.2        v7       git_v3.61
+# [[file:Models/NonLinearElasticity.m4]]
+good    Models/NonLinearElasticity              v2      0.175299            -         -5.7        v7       debian_4.13+dfsg-1+b3
+ok      Models/NonLinearElasticity              v2      0.175299            -         -           v4       debian_4.14+dfsg-1
+good    Models/NonLinearElasticity              v2      0.175299            -         -5.7        v7       git_201226
+good    Models/NonLinearElasticity              v2      0.175299            -         -5.7        v7       git_211227
+good    Models/NonLinearElasticity              v2      0.175299            -         -5.7        v7       git_221230
+good    Models/NonLinearElasticity              v2      0.175299            -         -5.7        v7       git_240227
+good    Models/NonLinearElasticity              v2      0.175299            -         -5.7        v7       git_v3.61
+# [[file:Models/NonLinearStatic.m4]]
+good    Models/NonLinearStatic                  v2      9.21755             -         -6.6        v7       debian_4.13+dfsg-1+b3
+ok      Models/NonLinearStatic                  v2      9.21755             -         -           v4       debian_4.14+dfsg-1
+good    Models/NonLinearStatic                  v2      9.21755             -         -6.6        v7       git_201226
+good    Models/NonLinearStatic                  v2      9.21755             -         -6.6        v7       git_211227
+good    Models/NonLinearStatic                  v2      9.21755             -         -6.6        v7       git_221230
+good    Models/NonLinearStatic                  v2      9.21755             -         -6.6        v7       git_240227
+good    Models/NonLinearStatic                  v2      9.21755             -         -6.6        v7       git_v3.61
+# [[file:Models/Static11.m4]]
+good    Models/Static11                         v3      0.000597039         -         -6.2        v7       debian_4.13+dfsg-1+b3
+ok      Models/Static11                         v2      8.94093             -         -           v4       debian_4.14+dfsg-1
+ko      Models/Static11                         v3      0.000600369         -         -2.3        v7       git_201226
+good    Models/Static11                         v3      0.000597039         -         -6.2        v7       git_211227
+good    Models/Static11                         v3      0.000597039         -         -6.2        v7       git_221230
+good    Models/Static11                         v3      0.000597039         -         -6.2        v7       git_240227
+good    Models/Static11                         v3      0.00059718          -         -3.6        v7       git_v3.61
+# [[file:Models/Static12.m4]]
+good    Models/Static12                         v2      1.29431             -         -5.4        v7       debian_4.13+dfsg-1+b3
+ok      Models/Static12                         v2      1.29431             -         -           v4       debian_4.14+dfsg-1
+good    Models/Static12                         v2      1.29431             -         -5.4        v7       git_201226
+good    Models/Static12                         v2      1.29431             -         -5.4        v7       git_211227
+good    Models/Static12                         v2      1.29431             -         -5.4        v7       git_221230
+good    Models/Static12                         v2      1.29431             -         -5.4        v7       git_240227
+good    Models/Static12                         v2      1.29432             -         -5.3        v7       git_v3.61
+# [[file:Models/Static1.m4]]
+good    Models/Static1                          v2      16.3804             -         -5.6        v7       debian_4.13+dfsg-1+b3
+ok      Models/Static1                          v2      16.3804             -         -           v4       debian_4.14+dfsg-1
+good    Models/Static1                          v2      16.3804             -         -5.6        v7       git_201226
+good    Models/Static1                          v2      16.3804             -         -5.6        v7       git_211227
+good    Models/Static1                          v2      16.3804             -         -5.6        v7       git_221230
+good    Models/Static1                          v2      16.3804             -         -5.6        v7       git_240227
+good    Models/Static1                          v2      16.3804             -         -5.6        v7       git_v3.61
+# [[file:Models/Static2.m4]]
+good    Models/Static2                          v2      281.534             -         -5.9        v7       debian_4.13+dfsg-1+b3
+ok      Models/Static2                          v2      281.534             -         -           v4       debian_4.14+dfsg-1
+good    Models/Static2                          v2      281.534             -         -5.9        v7       git_201226
+good    Models/Static2                          v2      281.534             -         -5.9        v7       git_211227
+good    Models/Static2                          v2      281.534             -         -5.9        v7       git_221230
+good    Models/Static2                          v2      281.534             -         -5.9        v7       git_240227
+good    Models/Static2                          v2      281.534             -         -5.9        v7       git_v3.61
+# [[file:Models/Static3.m4]]
+good    Models/Static3                          v2      4111.7              -         -6.0        v7       debian_4.13+dfsg-1+b3
+ok      Models/Static3                          v2      4111.7              -         -           v4       debian_4.14+dfsg-1
+ko      Models/Static3                          v2      4122.2              -         -2.6        v7       git_201226
+good    Models/Static3                          v2      4111.7              -         -6.0        v7       git_211227
+good    Models/Static3                          v2      4111.7              -         -6.0        v7       git_221230
+good    Models/Static3                          v2      4111.7              -         -6.0        v7       git_240227
+good    Models/Static3                          v2      4111.7              -         -6.0        v7       git_v3.61
+# [[file:Models/Static4.m4]]
+good    Models/Static4                          v2      0.0031581           -         -6.0        v7       debian_4.13+dfsg-1+b3
+ok      Models/Static4                          v2      0.0031581           -         -           v4       debian_4.14+dfsg-1
+good    Models/Static4                          v2      0.0031581           -         -6.0        v7       git_201226
+good    Models/Static4                          v2      0.0031581           -         -6.0        v7       git_211227
+good    Models/Static4                          v2      0.0031581           -         -6.0        v7       git_221230
+good    Models/Static4                          v2      0.0031581           -         -6.0        v7       git_240227
+good    Models/Static4                          v2      0.0031581           -         -6.0        v7       git_v3.61
+# [[file:Models/Static7.m4]]
+ko      Models/Static7                          v3      1.93614             -         -5.4        v7       debian_4.13+dfsg-1+b3
+fail    Models/Static7                          -       -                   -         -           v4       debian_4.14+dfsg-1
+ko      Models/Static7                          v3      1.93614             -         -5.4        v7       git_201226
+ko      Models/Static7                          v3      1.93614             -         -5.4        v7       git_211227
+ko      Models/Static7                          v3      1.93614             -         -5.4        v7       git_221230
+ko      Models/Static7                          v3      1.93614             -         -5.4        v7       git_240227
+ko      Models/Static7                          v3      1.93613             -         -5.7        v7       git_v3.61
+# [[file:Models/Static9.m4]]
+good    Models/Static9                          v2      11709.9             -         -5.5        v7       debian_4.13+dfsg-1+b3
+ok      Models/Static9                          v2      11709.9             -         -           v4       debian_4.14+dfsg-1
+good    Models/Static9                          v2      11709.9             -         -5.5        v7       git_201226
+good    Models/Static9                          v2      11709.9             -         -5.5        v7       git_211227
+good    Models/Static9                          v2      11709.9             -         -5.5        v7       git_221230
+good    Models/Static9                          v2      11709.9             -         -5.5        v7       git_240227
+good    Models/Static9                          v2      11709.9             -         -5.5        v7       git_v3.61
+# [[file:Models/Transmission.m4]]
+good    Models/Transmission                     v2      0.0112057           -         -5.6        v7       debian_4.13+dfsg-1+b3
+ok      Models/Transmission                     v2      0.0112057           -         -           v4       debian_4.14+dfsg-1
+good    Models/Transmission                     v2      0.0112057           -         -5.6        v7       git_201226
+good    Models/Transmission                     v2      0.0112057           -         -5.6        v7       git_211227
+good    Models/Transmission                     v2      0.0112057           -         -5.6        v7       git_221230
+good    Models/Transmission                     v2      0.0112057           -         -5.6        v7       git_240227
+good    Models/Transmission                     v2      0.0112057           -         -5.6        v7       git_v3.61
+# [[file:Models/VariationalInequality.m4]]
+good    Models/VariationalInequality            v2      0.438074            -         -6.2        v7       debian_4.13+dfsg-1+b3
+ok      Models/VariationalInequality            v2      0.438074            -         -           v4       debian_4.14+dfsg-1
+good    Models/VariationalInequality            v2      0.438074            -         -6.2        v7       git_201226
+good    Models/VariationalInequality            v2      0.438074            -         -6.2        v7       git_211227
+good    Models/VariationalInequality            v2      0.438074            -         -6.2        v7       git_221230
+good    Models/VariationalInequality            v2      0.438074            -         -6.2        v7       git_240227
+good    Models/VariationalInequality            v2      0.438074            -         -6.2        v7       git_v3.61
+# [[file:Models/WhisperingGallery.m4]]
+good    Models/WhisperingGallery                v3      18.2238             +         -5.8        v7       debian_4.13+dfsg-1+b3
+ok      Models/WhisperingGallery                v2      18.2238             -         -           v4       debian_4.14+dfsg-1
+good    Models/WhisperingGallery                v2      18.2238             -         -5.8        v7       git_201226
+good    Models/WhisperingGallery                v2      18.2238             -         -5.8        v7       git_211227
+good    Models/WhisperingGallery                v2      18.2238             -         -5.8        v7       git_221230
+good    Models/WhisperingGallery                v2      18.2238             -         -5.8        v7       git_240227
+toolong Models/WhisperingGallery                v3      -                   +         -           v7       git_v3.61
