@@ -31,7 +31,7 @@
 
 <!-- [[https://docs.github.com/fr/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax]] -->
 
-# Set of reference results for the [FreeFEM](https://github.com/FreeFem) documentation
+# Reference results from the [FreeFEM](https://github.com/FreeFem) documentation
 
 This repository contains scripts from chapters
 [Learning by examples](https://doc.freefem.org/tutorials/index.html)
@@ -40,13 +40,13 @@ of the [FreeFEM documentation](https://doc.freefem.org/documentation).
 
 Alongside these files, a [database](history.db) lists their numerical results, obtained with various versions of FreeFEM.
 
-This project can be used as a source of working example scripts and as a non-regression testing suite.
-
 The objective is to gather the most meaningful reference values and error estimates for all these scripts. And to improve these values
 through mathematical and physical analysis of the simulated models. This is a constant work in progress so some numerical values may vary
 depending on the versions of the scripts (version information is stored in the database).
 
-Any question or comment on the [FreeFEM forum](https://community.freefem.org) or directly to @alh104 is welcome.
+This project can be used as a source of working example scripts and as a non-regression testing suite.
+
+Questions and comments are welcome on the [FreeFEM forum](https://community.freefem.org) or directly to @alh104.
 
 <!-- 
    - Local Variables:
