@@ -1,0 +1,96 @@
+
+
+
+// ~/ffalh/ffref/Models/Static7.m4
+// ===============================
+// 
+// Originally from [[https://doc.freefem.org/models/static-problems.html]]
+// Adapted by Antoine Le Hyaric ([[http://www.ljll.fr/lehyaric]])
+// 
+// [[elisp:(progn (org-link-minor-mode) (setq org-link-descriptive nil) (org-toggle-link-display))][hide links]] [[elisp:(progn (org-link-minor-mode) (setq org-link-descriptive t) (org-toggle-link-display))][show links]] [[elisp:(alh-1dex-open)][open 1dex]] [[elisp:(alh-1dex-update)][update 1dex]]
+// [[elisp:(alh-set-keywords)][set keywords]] ([[file:~/alh/bin/headeralh][headeralh]])
+// emacs-keywords adapted edp nofaces origin=[[https://doc.freefem.org/models/static-problems.html#periodic-boundary-conditions]] start=08/10/21 update=10/06/24
+
+// Macro
+//irregular boundary condition to build border AB
+macro LINEBORDER(A, B, lab)
+    border A#B(t=0,1){ real t1=1.-t;
+    x=A#x*t1+B#x*t;
+    y=A#y*t1+B#y*t;
+    label=lab; } //EOM
+// compute \||AB|\| A=(ax,ay) et B =(bx,by)
+macro dist(ax, ay, bx, by)
+    sqrt(square((ax)-(bx)) + square((ay)-(by))) //EOM
+macro Grad(u) [dx(u), dy(u)] //EOM
+
+// Parameters
+int n = 10;
+real Ax = 0.9, Ay = 1;
+real Bx = 2, By = 1;
+real Cx = 2.5, Cy = 2.5;
+real Dx = 1, Dy = 2;
+real gx = (Ax+Bx+Cx+Dx)/4.;
+real gy = (Ay+By+Cy+Dy)/4.;
+
+// Mesh
+LINEBORDER(A,B,1)
+LINEBORDER(B,C,2)
+LINEBORDER(C,D,3)
+LINEBORDER(D,A,4)
+mesh Th=buildmesh(AB(n)+BC(n)+CD(n)+DA(n),fixedborder=1);
+
+// Fespace
+real l1 = dist(Ax,Ay,Bx,By);
+real l2 = dist(Bx,By,Cx,Cy);
+real l3 = dist(Cx,Cy,Dx,Dy);
+real l4 = dist(Dx,Dy,Ax,Ay);
+func s1 = dist(Ax,Ay,x,y)/l1; //absisse on AB = ||AX||/||AB||
+func s2 = dist(Bx,By,x,y)/l2; //absisse on BC = ||BX||/||BC||
+func s3 = dist(Cx,Cy,x,y)/l3; //absisse on CD = ||CX||/||CD||
+func s4 = dist(Dx,Dy,x,y)/l4; //absisse on DA = ||DX||/||DA||
+fespace Vh(Th, P1, periodic=[[1, s1], [3, s3], [2, s2], [4, s4]]);
+Vh u, v;
+
+real cc = 0;
+cc = int2d(Th)((x-gx)*(y-gy)-cc)/Th.area;
+cout << "compatibility = " << int2d(Th)((x-gx)*(y-gy)-cc) <<endl;
+
+// Problem
+solve Poisson (u, v)
+    = int2d(Th)(
+        Grad(u)'*Grad(v)
+        + 1e-10*u*v
+    )
+    -int2d(Th)(
+        10*v*((x-gx)*(y-gy)-cc)
+    )
+    ;
+
+// Plot
+plot(u, value=true);
+
+// [[elisp:(compile "cd .. && ./history -default -run -db Models/PeriodicNonParallelBC2")]] => [[file:PeriodicNonParallelBC2.default.out]]
+
+real ref=int2d(Th)(abs(u));
+real ffreferror=abs(ref-0.172408)/0.172408;
+cout<<"FFREF_"<<"ERROR="<<ffreferror<<endl;
+cout<<"FFREF_"<<"ERRMAX="<<1e-5<<endl;
+cout<<"FFREF_REF"<<"VAL="<<ref<<endl;
+cout<<"FFREF_CHECK_";
+if(ffreferror<1e-5)cout<<"OK"<<endl;
+else cout<<"KO"<<endl;
+;
+// Version v4;
+// Fail; // Requires fixedborder parameter
+// Test level +;
+
+// Local Variables:
+// mode:ff++
+// c-basic-offset:2
+// eval:(visual-line-mode t)
+// coding:utf-8
+// eval:(flyspell-prog-mode)
+// eval:(outline-minor-mode)
+// eval:(org-link-minor-mode)
+// End:
+// LocalWords: emacs

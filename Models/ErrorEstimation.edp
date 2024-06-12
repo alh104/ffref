@@ -1,0 +1,95 @@
+
+
+
+// ~/ffalh/ffref/Models/ErrorEstimation.m4
+// =======================================
+// 
+// Originally from [[https://doc.freefem.org/models/static-problems.html#error-estimation]]
+// Adapted by Antoine Le Hyaric ([[http://www.ljll.fr/lehyaric]])
+// 
+// [[elisp:(progn (org-link-minor-mode) (setq org-link-descriptive nil) (org-toggle-link-display))][hide links]] [[elisp:(progn (org-link-minor-mode) (setq org-link-descriptive t) (org-toggle-link-display))][show links]] [[elisp:(alh-1dex-open)][open 1dex]] [[elisp:(alh-1dex-update)][update 1dex]]
+// [[elisp:(alh-set-keywords)][set keywords]] ([[file:~/alh/bin/headeralh][headeralh]])
+// emacs-keywords adapted edp nofaces origin=[[https://doc.freefem.org/models/static-problems.html#error-estimation]] start=08/10/21 update=11/06/24
+
+// Parameters
+func f = x*y;
+
+//Mesh
+mesh Th0 = square(100, 100);
+
+// Fespace
+fespace V0h(Th0, P2);
+V0h u0, v0;
+
+// Problem
+solve Poisson0 (u0, v0)
+    = int2d(Th0)(
+        dx(u0)*dx(v0)
+        + dy(u0)*dy(v0)
+    )
+    - int2d(Th0)(
+        f*v0
+    )
+    + on(1, 2, 3, 4, u0=0)
+    ;
+plot(u0);
+
+// Error loop
+real[int] errL2(10), errH1(10);
+for (int i = 1; i <= 10; i++){
+    // Mesh
+    mesh Th = square(5+i*3,5+i*3);
+
+    // Fespace
+    fespace Vh(Th, P1);
+    Vh u, v;
+    fespace Ph(Th, P0);
+    Ph h = hTriangle; //get the size of all triangles
+
+    // Problem
+    solve Poisson (u, v)
+        = int2d(Th)(
+            dx(u)*dx(v)
+            + dy(u)*dy(v)
+        )
+        - int2d(Th)(
+            f*v
+        )
+        + on(1, 2, 3, 4, u=0)
+        ;
+
+    // Error
+    V0h uu = u; //interpolate solution on first mesh
+    errL2[i-1] = sqrt( int2d(Th0)((uu - u0)^2) )/h[].max^2;
+    errH1[i-1] = sqrt( int2d(Th0)(f*(u0 - 2*uu + uu)) )/h[].max;
+}
+
+// Display
+cout << "C1 = " << errL2.max << "("<<errL2.min<<")" << endl;
+cout << "C2 = " << errH1.max << "("<<errH1.min<<")" << endl;
+
+// [[elisp:(compile "cd .. && make Models/ErrorEstimation.default.out")]] => [[file:ErrorEstimation.default.out]]
+// [[elisp:(compile "cd .. && ./history -default -run -db Models/ErrorEstimation")]] => [[file:ErrorEstimation.default.out]]
+
+real ref=errH1.max;
+real ffreferror=abs(ref-0.0729566)/0.0729566;
+cout<<"FFREF_"<<"ERROR="<<ffreferror<<endl;
+cout<<"FFREF_"<<"ERRMAX="<<1e-5<<endl;
+cout<<"FFREF_REF"<<"VAL="<<ref<<endl;
+cout<<"FFREF_CHECK_";
+if(ffreferror<1e-5)cout<<"OK"<<endl;
+else cout<<"KO"<<endl;
+;
+// Version v3;
+// Test level +;
+
+// Local Variables:
+// mode:ff++
+// c-basic-offset:2
+// eval:(visual-line-mode t)
+// coding:utf-8
+// eval:(flyspell-prog-mode)
+// eval:(outline-minor-mode)
+// eval:(org-link-minor-mode)
+// End:
+// LocalWords: emacs

@@ -1,0 +1,87 @@
+
+
+
+// ~/ffalh/ffref/Examples/ThermalConduction.m4
+// ===========================================
+// 
+// Originally from [[https://doc.freefem.org/tutorials/thermalConduction.html]]
+// Adapted by Antoine Le Hyaric ([[http://www.ljll.fr/lehyaric]])
+// 
+// Sorbonne Université, CNRS, Laboratoire Jacques-Louis Lions, F-75005, Paris, France
+// 
+// [[elisp:(progn (org-link-minor-mode) (setq org-link-descriptive nil) (org-toggle-link-display))][hide links]] [[elisp:(progn (org-link-minor-mode) (setq org-link-descriptive t) (org-toggle-link-display))][show links]] [[elisp:(alh-1dex-open)][open 1dex]] [[elisp:(alh-1dex-update)][update 1dex]]
+// [[elisp:(alh-set-keywords)][set keywords]] ([[file:~/alh/bin/headeralh][headeralh]])
+// emacs-keywords adapted edp nofaces origin=[[https://doc.freefem.org/tutorials/thermalConduction.html]] start=08/10/21 univ update=10/06/24
+
+// Parameters
+func u0 = 10. + 90.*x/6.;
+func k = 1.8*(y<0.5) + 0.2;
+real ue = 25.;
+real alpha=0.25;
+real T=5.;
+real dt=0.1 ;
+
+// Mesh
+mesh Th = square(30, 5, [6.*x,y]);
+
+// Fespace
+fespace Vh(Th, P1);
+Vh u=u0, v, uold;
+
+// Problem
+problem thermic(u, v)
+	= int2d(Th)(
+		  u*v/dt
+		+ k*(
+			  dx(u) * dx(v)
+			+ dy(u) * dy(v)
+		)
+	)
+	+ int1d(Th, 1, 3)(
+		  alpha*u*v
+	)
+	- int1d(Th, 1, 3)(
+		  alpha*ue*v
+	)
+	- int2d(Th)(
+		  uold*v/dt
+	)
+	+ on(2, 4, u=u0)
+	;
+
+// Time iterations
+ofstream ff("test_thermic.dat");
+for(real t = 0; t < T; t += dt){
+	uold = u; //equivalent to u^{n-1} = u^n
+	thermic; //here the thermic problem is solved
+	ff << u(3., 0.5) << endl;
+	plot(u);
+}
+
+// [[elisp:(compile "cd .. && ./history -default -run -db Examples/ThermalConduction")]] => [[file:ThermalConduction.default.out]]
+// [[elisp:(compile "cd .. && ./history -ffjs -run -db Examples/ThermalConduction")]] => [[file:ThermalConduction.ffjs_dev.out]]
+// [[file:../history.db::Examples/ThermalConduction]]
+// [[elisp:(compile "FreeFem++ ThermalConduction.edp")]]
+
+real ref=int2d(Th)(u);
+real ffreferror=abs(ref-239.936)/239.936;
+cout<<"FFREF_"<<"ERROR="<<ffreferror<<endl;
+cout<<"FFREF_"<<"ERRMAX="<<1e-3<<endl;
+cout<<"FFREF_REF"<<"VAL="<<ref<<endl;
+cout<<"FFREF_CHECK_";
+if(ffreferror<1e-3)cout<<"OK"<<endl;
+else cout<<"KO"<<endl;
+;
+// Version v2;
+// Test level +;
+
+// Local Variables:
+// mode:ff++
+// c-basic-offset:2
+// eval:(visual-line-mode t)
+// coding:utf-8
+// eval:(flyspell-prog-mode)
+// eval:(outline-minor-mode)
+// eval:(org-link-minor-mode)
+// End:
+// LocalWords: emacs

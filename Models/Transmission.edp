@@ -1,0 +1,81 @@
+
+
+
+// ~/ffalh/ffref/Models/Transmission.m4
+// ====================================
+// 
+// Originally from [[https://doc.freefem.org/models/transmission-problem.html]]
+// Adapted by Antoine Le Hyaric ([[http://www.ljll.fr/lehyaric]])
+// 
+// [[elisp:(progn (org-link-minor-mode) (setq org-link-descriptive nil) (org-toggle-link-display))][hide links]] [[elisp:(progn (org-link-minor-mode) (setq org-link-descriptive t) (org-toggle-link-display))][show links]] [[elisp:(alh-1dex-open)][open 1dex]] [[elisp:(alh-1dex-update)][update 1dex]]
+// [[elisp:(alh-set-keywords)][set keywords]] ([[file:~/alh/bin/headeralh][headeralh]])
+// emacs-keywords adapted edp nofaces origin=[[https://doc.freefem.org/models/transmission-problem.html]] start=08/10/21 update=10/06/24
+
+// Mesh
+border a(t=0, 1){x=t; y=0;};
+border b(t=0, 0.5){x=1; y=t;};
+border c(t=0, 0.5){x=1-t; y=0.5;};
+border d(t=0.5, 1){x=0.5; y=t;};
+border e(t=0.5, 1){x=1-t; y=1;};
+border f(t=0, 1){x=0; y=1-t;};
+border i1(t=0, 0.5){x=t; y=1-t;};
+border i2(t=0, 0.5){x=t; y=t;};
+border i3(t=0, 0.5){x=1-t; y=t;};
+mesh th = buildmesh(a(6) + b(4) + c(4) +d(4) + e(4)
+    + f(6) + i1(6) + i2(6) + i3(6));
+
+// Fespace
+fespace Ph(th, P0); //constant discontinuous functions / element
+Ph reg=region; //defined the P0 function associated to region number
+
+// Plot
+plot(reg, fill=true, wait=true, value=true);
+
+// Characteristic function
+int nupper = reg(0.4, 0.9); //get the region number of point (0.4,0.9)
+int nlower = reg(0.9, 0.1); //get the region number of point (0.4,0.1)
+cout << "nlower = " <<  nlower << ", nupper = " << nupper<< endl;
+Ph nu = 1 + 5*(region==nlower) + 10*(region==nupper);
+
+// Plot
+plot(nu, fill=true,wait=true);
+
+// Problem
+fespace Vh(th,P1);
+Vh u,v;
+solve lap (u, v)
+    = int2d(th)(
+          nu*(dx(u)*dx(v) + dy(u)*dy(v))
+    )
+    + int2d(th)(
+        - 1*v
+    )
+    + on(a, b, c, d, e, f, u=0)
+    ;
+
+// Plot
+plot(u);
+
+real ref=u[]'*u[];
+real ffreferror=abs(ref-0.0112057)/0.0112057;
+cout<<"FFREF_"<<"ERROR="<<ffreferror<<endl;
+cout<<"FFREF_"<<"ERRMAX="<<1e-5<<endl;
+cout<<"FFREF_REF"<<"VAL="<<ref<<endl;
+cout<<"FFREF_CHECK_";
+if(ffreferror<1e-5)cout<<"OK"<<endl;
+else cout<<"KO"<<endl;
+;
+
+// v2: add a reference value
+// Version v2;
+
+// Local Variables:
+// mode:ff++
+// c-basic-offset:2
+// eval:(visual-line-mode t)
+// coding:utf-8
+// eval:(flyspell-prog-mode)
+// eval:(outline-minor-mode)
+// eval:(org-link-minor-mode)
+// End:
+// LocalWords: emacs
